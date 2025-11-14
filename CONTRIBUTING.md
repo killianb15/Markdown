@@ -33,7 +33,7 @@ const questions = [
 ## Ajouter une réponse
 
 1. **Forkez** ce repository
-2. Créez un nouveau fichier dans le dossier `_reponses/`
+2. Créez un nouveau fichier dans le dossier `reponses/`
 3. Nommez-le selon le format : `YYYY-MM-DD-votre-titre.md`
 4. Utilisez ce template :
 ```markdown
@@ -50,8 +50,8 @@ Votre réponse détaillée ici...
 5. **Mettez à jour** le fichier `index.html` en ajoutant votre fichier dans le tableau `reponses`
 ```javascript
 const reponses = [
-    '_reponses/2025-01-15-reponse-javascript.md',
-    '_reponses/YYYY-MM-DD-votre-titre.md' // Ajoutez cette ligne
+    'reponses/2025-01-15-reponse-javascript.md',
+    'reponses/YYYY-MM-DD-votre-titre.md' // Ajoutez cette ligne
 ];
 ```
 
@@ -82,8 +82,8 @@ votre-projet/
 │   └── style.css
 ├── js/
 │   └── app.js
-├── _questions/          ← Renommé avec underscore
+├── questions/          ← Renommé avec underscore
 │   ├── 2025-01-15-comment-utiliser-javascript.md
 │   └── 2025-03-16-comment-tuer-ces-collegue.md
-└── _reponses/           ← Renommé avec underscore
+└── reponses/           ← Renommé avec underscore
     └── 2025-01-15-reponse-javascript.md
