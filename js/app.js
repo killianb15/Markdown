@@ -24,7 +24,7 @@ function parseFrontmatter(content) {
 // Charger un fichier markdown
 async function loadMarkdown(file, type) {
     try {
-        const response = await fetch(`../${file}`);
+        const response = await fetch(`./${file}`);
         const text = await response.text();
         const { frontmatter, content } = parseFrontmatter(text);
         
@@ -45,14 +45,14 @@ async function loadMarkdown(file, type) {
             const reponseLink = document.getElementById('reponse-link');
             const reponseLinkUrl = document.getElementById('reponse-link-url');
             reponseLink.style.display = 'block';
-            reponseLinkUrl.href = `../reponse.html?file=reponses/${frontmatter.reponse_id}.md`;
+            reponseLinkUrl.href = `./reponse.html?file=_reponses/${frontmatter.reponse_id}.md`;
         }
         
         if (type === 'reponse' && frontmatter.question_id) {
             const questionLink = document.getElementById('question-link');
             const questionLinkUrl = document.getElementById('question-link-url');
             questionLink.style.display = 'block';
-            questionLinkUrl.href = `../question.html?file=questions/${frontmatter.question_id}.md`;
+            questionLinkUrl.href = `./question.html?file=_questions/${frontmatter.question_id}.md`;
         }
         
         document.title = frontmatter.title || 'Question/Réponse';
