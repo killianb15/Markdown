@@ -2,23 +2,14 @@
 title: Questions & Réponses
 description: Site collaboratif de questions et réponses
 
-# Inclure les dossiers markdown
-include:
-  - questions
-  - reponses
-
-# Exclure certains fichiers/dossiers
+# Exclure certains fichiers/dossiers du traitement Jekyll
 exclude:
   - node_modules
   - vendor
   - README.md
   - CONTRIBUTING.md
 
-# Collections (déjà présent dans votre code)
-collections:
-  questions:
-    output: true
-    permalink: /_questions/:name/
-  reponses:
-    output: true
-    permalink: /_reponses/:name/
+# Inclure les dossiers avec underscore (important!)
+include:
+  - _questions
+  - _reponses
