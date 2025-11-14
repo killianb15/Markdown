@@ -1,9 +1,7 @@
 name: Deploy static site to Pages
 
 on:
-  push:
-    branches:
-      - main
+  push:  # <-- déclenché pour tous les push
 
 permissions:
   contents: read
