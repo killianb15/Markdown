@@ -93,7 +93,7 @@ async function loadList(listId, files, targetPage) {
             li.appendChild(meta);
             listElement.appendChild(li);
         } catch (error) {
-            console.error(`Erreur lors du chargement de ${file}:`, error);
+            console.error(`Erreur lors du chargement de ${file}:`, error); 
         }
     }
 }
