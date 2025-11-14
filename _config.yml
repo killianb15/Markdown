@@ -1,3 +1,20 @@
+# Configuration Jekyll
+title: Questions & Réponses
+description: Site collaboratif de questions et réponses
+
+# Inclure les dossiers markdown
+include:
+  - questions
+  - reponses
+
+# Exclure certains fichiers/dossiers
+exclude:
+  - node_modules
+  - vendor
+  - README.md
+  - CONTRIBUTING.md
+
+# Collections (déjà présent dans votre code)
 collections:
   questions:
     output: true
