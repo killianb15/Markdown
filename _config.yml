@@ -1,23 +1,7 @@
-# _config.yml
-title: "Questions & Réponses"
-description: "Site collaboratif"
-
-# Force Jekyll à inclure ces dossiers
-include:
-  - _questions
-  - _reponses
-
-# Ne pas exclure les fichiers markdown
-keep_files:
-  - questions
-  - reponses
-
-# Désactive le processing des markdown
-markdown: kramdown
-
-exclude:
-  - README.md
-  - CONTRIBUTING.md
-  - vendor
-  - Gemfile
-  - Gemfile.lock
+collections:
+  questions:
+    output: true
+    permalink: /questions/:name/
+  reponses:
+    output: true
+    permalink: /reponses/:name/
