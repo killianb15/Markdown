@@ -1,0 +1,93 @@
+name: Validate Markdown Files
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Validate Markdown structure
+        run: |
+          echo "🔍 Validation des fichiers markdown..."
+          
+          # Fonction pour valider un fichier
+          validate_file() {
+            file=$1
+            echo "Checking: $file"
+            
+            # Vérifier que le fichier existe
+            if [ ! -f "$file" ]; then
+              echo "❌ Fichier introuvable: $file"
+              return 1
+            fi
+            
+            # Vérifier la présence du frontmatter
+            if ! head -1 "$file" | grep -q "^---$"; then
+              echo "❌ $file manque le frontmatter (doit commencer par ---)"
+              return 1
+            fi
+            
+            # Vérifier les champs obligatoires
+            if ! grep -q "^title:" "$file"; then
+              echo "❌ $file manque le champ 'title:'"
+              return 1
+            fi
+            
+            if ! grep -q "^author:" "$file"; then
+              echo "❌ $file manque le champ 'author:'"
+              return 1
+            fi
+            
+            if ! grep -q "^date:" "$file"; then
+              echo "❌ $file manque le champ 'date:'"
+              return 1
+            fi
+            
+            echo "✅ $file est valide"
+            return 0
+          }
+          
+          # Valider toutes les questions
+          if [ -d "questions" ]; then
+            for file in questions/*.md; do
+              if [ -f "$file" ]; then
+                validate_file "$file" || exit 1
+              fi
+            done
+          fi
+          
+          # Valider toutes les réponses
+          if [ -d "reponses" ]; then
+            for file in reponses/*.md; do
+              if [ -f "$file" ]; then
+                validate_file "$file" || exit 1
+              fi
+            done
+          fi
+          
+          echo "✨ Tous les fichiers sont valides !"
+      
+      - name: Check file naming convention
+        run: |
+          echo "🔍 Vérification du format des noms de fichiers..."
+          
+          # Vérifier que les fichiers suivent le format YYYY-MM-DD-titre.md
+          for file in questions/*.md reponses/*.md; do
+            if [ -f "$file" ]; then
+              filename=$(basename "$file")
+              if ! echo "$filename" | grep -Eq "^[0-9]{4}-[0-9]{2}-[0-9]{2}-.*\.md$"; then
+                echo "❌ $file ne suit pas le format YYYY-MM-DD-titre.md"
+                exit 1
+              fi
+            fi
+          done
+          
+          echo "✅ Tous les noms de fichiers sont corrects !"
