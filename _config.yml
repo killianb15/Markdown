@@ -1,0 +1,9 @@
+# _config.yml
+include:
+  - questions
+  - reponses
+
+exclude:
+  - README.md
+  - CONTRIBUTING.md
+  - vendor
