@@ -4,10 +4,8 @@ description: "Site collaboratif"
 
 # Force Jekyll à inclure ces dossiers
 include:
-  - questions
-  - reponses
-  - js
-  - css
+  - _questions
+  - _reponses
 
 # Ne pas exclure les fichiers markdown
 keep_files:

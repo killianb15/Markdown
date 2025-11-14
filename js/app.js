@@ -24,7 +24,7 @@ function parseFrontmatter(content) {
 // Charger un fichier markdown
 async function loadMarkdown(file, type) {
     try {
-        const response = await fetch(`../${file}`);
+        const response = await fetch(`../_${file}`);
         const text = await response.text();
         const { frontmatter, content } = parseFrontmatter(text);
         
